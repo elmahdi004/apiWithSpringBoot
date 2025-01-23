@@ -2,8 +2,10 @@ package com.example.createApiDemo.services;
 
 import com.example.createApiDemo.entities.Teacher;
 import com.example.createApiDemo.repositories.TeacherRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TeacherService {
@@ -11,8 +13,12 @@ public class TeacherService {
     public TeacherService(TeacherRepository teacherRepository) {
         this.teacherRepository = teacherRepository;
     }
-
-    public void createTeacher(Teacher teacher) {
-        teacherRepository.save(teacher);
+ @Transactional
+    public Teacher createTeacher(Teacher teacher) {
+        return teacherRepository.save(teacher);
+    }
+    @Transactional
+    public List<Teacher> teachers(){
+        return teacherRepository.findAll();
     }
 }

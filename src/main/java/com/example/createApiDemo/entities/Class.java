@@ -1,6 +1,8 @@
 package com.example.createApiDemo.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -14,6 +16,7 @@ public class Class {
     @Column(nullable = true)
     public String description;
     @OneToMany(mappedBy = "classId")
+//    @JsonIgnoreProperties("teacher")
     public List<Student> students;
 
     public int getId() {

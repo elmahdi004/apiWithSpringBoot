@@ -1,6 +1,8 @@
 package com.example.createApiDemo.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -13,8 +15,10 @@ public class Student {
     private String name;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "class_id")
+    @JsonIgnoreProperties("students")
     private Class classId;
     @ManyToMany(mappedBy = "students")
+    @JsonIgnoreProperties("students")
     private List<Teacher> teachers;
 
     public int getId() {

@@ -1,6 +1,8 @@
 package com.example.createApiDemo.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -13,6 +15,7 @@ public class Teacher {
     private String name;
     @ManyToMany
     @JoinTable(name = "student_teachers",joinColumns = {@JoinColumn(name = "teacher_id")},inverseJoinColumns = {@JoinColumn(name = "student_id")})
+    @JsonIgnoreProperties("teacher")
     private List<Student> students;
 
     public int getId() {
