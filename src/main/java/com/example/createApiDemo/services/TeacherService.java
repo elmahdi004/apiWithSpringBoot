@@ -13,12 +13,24 @@ public class TeacherService {
     public TeacherService(TeacherRepository teacherRepository) {
         this.teacherRepository = teacherRepository;
     }
- @Transactional
+    @Transactional
     public Teacher createTeacher(Teacher teacher) {
         return teacherRepository.save(teacher);
     }
     @Transactional
     public List<Teacher> teachers(){
         return teacherRepository.findAll();
+    }
+    @Transactional
+    public Teacher getTeacherById(int id) {
+        return teacherRepository.findById(id).isPresent() ? teacherRepository.findById(id).get() : null;
+    }
+    @Transactional
+    public Teacher getTeacherByName(String name) {
+        return teacherRepository.findByName(name);
+    }
+    @Transactional
+    public Teacher searchTeacherByName(String name) {
+        return teacherRepository.findByNameContaining(name);
     }
 }

@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TeacherRepository extends JpaRepository<Teacher, Integer> {
+    public Teacher findByName(String name);
+    public Teacher findByNameContaining(String name);
 }

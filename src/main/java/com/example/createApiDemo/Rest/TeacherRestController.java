@@ -24,5 +24,17 @@ public class TeacherRestController {
     public Teacher createTeacher(@RequestBody Teacher teacher){
         return  teacherService.createTeacher(teacher);
     }
+    @GetMapping("/{id}")
+    public Teacher getTeacher(@PathVariable int id){
+        return teacherService.getTeacherById(id);
+    }
+    @GetMapping("/getByName")
+    public Teacher getTeacherByName(@RequestParam String name){
+        return teacherService.getTeacherByName(name);
+    }
+    @GetMapping("/searchByName")
+    public Teacher searchTeacherByName(@RequestParam String name){
+        return teacherService.searchTeacherByName(name);
+    }
 
 }
